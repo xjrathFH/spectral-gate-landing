@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spectral Gate</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 60px;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Spectral Gate</h1>
+    <p>
+      A creative audio plugin that transforms your sound with dreamy spectral
+      gating.
+    </p>
+    <img src="plugin-image.png" alt="Spectral Gate Plugin" width="300" /><br />
+    <h2>Subscribe for updates</h2>
+    <input type="email" id="email" placeholder="Your email" required />
+    <button onclick="submitEmail()">Subscribe</button>
+    <p id="msg"></p>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwk6lTQtecKXZ2gdOmSBKP7b0301UNpyPF1iuM0fJs5SmOkc2KElaPgbeMT3gHOVIBD/exec";
+      const startTime = Date.now();
+      let hasConverted = false;
+
+      fetch(scriptURL).catch(() => {});
+
+      // On conversion
+      function submitEmail() {
+        const emailField = document.getElementById("email");
+        const email = emailField.value.trim();
+        const msg = document.getElementById("msg");
+
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!valid) {
+          msg.innerText = "Please enter a valid email address.";
+          msg.style.color = "red";
+          return;
+        }
+
+        hasConverted = true;
+        clearInterval(pingInterval);
+
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: new URLSearchParams({
+            email,
+            time: timeSpent,
+            converted: "yes",
+          }),
+        })
+          .then(() => {
+            msg.innerText = "Thanks for subscribing!";
+            msg.style.color = "green";
+            emailField.value = "";
+          })
+          .catch(() => {
+            msg.innerText = "Something went wrong.";
+            msg.style.color = "red";
+          });
+      }
+    </script>
+  </body>
+</html>

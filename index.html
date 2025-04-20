@@ -20,7 +20,7 @@
 
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: #fafafa;
+        background-color: #dfdfdf;
         color: #000000;
         line-height: 1.6;
         min-height: 100vh;
@@ -28,31 +28,33 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
-        position: relative; /* Ensure the background GIF is relative to body */
+        position: relative;
       }
 
-      /* Add sparkle.gif as an overlay */
-      .sparkle {
-        position: absolute; /* Make it cover the entire page */
+      /* Sparkle overlay - fixed but allows scrolling */
+      .sparkle-overlay {
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1; /* Ensure the gif is behind the content */
-        object-fit: cover; /* Ensure it stretches to cover the page */
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.7;
+        mix-blend-mode: screen;
       }
 
       /* Container */
       .container {
         width: 100%;
         max-width: 800px;
-        background: #ffffff;
+        background: #f0f0f0;
         border: 1px solid #e0e0e0;
         padding: 3rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(160, 160, 160, 0.08);
         position: relative;
-        z-index: 1; /* Ensure content stays on top of the background gif */
+        z-index: 1;
+        margin: 2rem 0; /* Added margin for scrolling space */
       }
 
       /* Typography */
@@ -121,6 +123,8 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
+        position: relative;
+        z-index: 2;
       }
 
       button:hover {
@@ -134,6 +138,8 @@
         font-weight: 500;
         padding: 0.75rem;
         text-align: center;
+        position: relative;
+        z-index: 2;
       }
 
       #msg.success {
@@ -153,6 +159,8 @@
         font-size: 0.9rem;
         color: #808080;
         text-align: center;
+        position: relative;
+        z-index: 2;
       }
 
       /* Responsive Design */
@@ -183,6 +191,7 @@
           padding: 1.5rem;
           border: none;
           box-shadow: none;
+          margin: 1rem 0;
         }
 
         h1 {
@@ -196,14 +205,11 @@
     </style>
   </head>
   <body>
-    <!-- Sparkle GIF overlay -->
-    <img src="img/glitter.gif" alt="Sparkle Effect" class="sparkle" />
-
     <div class="container">
       <h1>BA_spectralGate</h1>
       <p>
         BA_spectralGate is an audio plugin designed to transform your sound with
-        spectral gating. Created as part of my bachelor’s thesis, this tool adds
+        spectral gating. Created as part of my bachelor's thesis, this tool adds
         subtle yet interesting artifacts to your audio, helping you create
         unique textures for sound design and music production.
       </p>
@@ -216,7 +222,7 @@
       />
 
       <h2>Try it for free when it's ready!</h2>
-      <p>Sign up below, and you’ll be the first to know when it's available!</p>
+      <p>Sign up below, and you'll be the first to know when it's available!</p>
 
       <div class="form-group">
         <input
@@ -230,9 +236,12 @@
       <div id="msg"></div>
 
       <div class="footer">
-        <p>Created as part of a bachelor's thesis project</p>
+        <p></p>
       </div>
     </div>
+
+    <!-- Sparkle GIF overlay -->
+    <img src="img/glitter.gif" alt="Sparkle Effect" class="sparkle-overlay" />
 
     <script>
       const scriptURL =

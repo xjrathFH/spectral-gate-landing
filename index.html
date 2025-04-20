@@ -2,31 +2,237 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Spectral Gate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BA_spectralGate - VST Plugin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        font-family: sans-serif;
-        text-align: center;
-        margin-top: 60px;
+      /* Reset & Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      input,
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #fafafa;
+        color: #000000;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        position: relative; /* Ensure the background GIF is relative to body */
+      }
+
+      /* Add sparkle.gif as an overlay */
+      .sparkle {
+        position: absolute; /* Make it cover the entire page */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Ensure the gif is behind the content */
+        object-fit: cover; /* Ensure it stretches to cover the page */
+      }
+
+      /* Container */
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        padding: 3rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        position: relative;
+        z-index: 1; /* Ensure content stays on top of the background gif */
+      }
+
+      /* Typography */
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #000000;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #000000;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #404040;
+        margin-bottom: 2rem;
+      }
+
+      /* Image */
+      .plugin-img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin: 2rem auto;
+        border: 1px solid #e0e0e0;
+        display: block;
+      }
+
+      /* Form Elements */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        font-size: 1rem;
+        color: #000000;
+        background-color: #ffffff;
+        transition: all 0.2s ease;
+      }
+
+      input[type="email"]::placeholder {
+        color: #808080;
+      }
+
+      input[type="email"]:focus {
+        outline: none;
+        border-color: #000000;
+      }
+
       button {
-        padding: 10px;
-        margin: 10px;
+        width: 100%;
+        padding: 1rem;
+        background-color: #000000;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      button:hover {
+        background-color: #404040;
+      }
+
+      /* Message */
+      #msg {
+        margin-top: 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.75rem;
+        text-align: center;
+      }
+
+      #msg.success {
+        color: #000000;
+        background-color: #f0f0f0;
+      }
+
+      #msg.error {
+        color: #000000;
+        background-color: #f0f0f0;
+        border-left: 3px solid #ff0000;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        color: #808080;
+        text-align: center;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+
+        .container {
+          padding: 2rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 1.5rem;
+          border: none;
+          box-shadow: none;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .plugin-img {
+          margin: 1.5rem auto;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Spectral Gate</h1>
-    <p>
-      A creative audio plugin that transforms your sound with dreamy spectral
-      gating.
-    </p>
-    <img src="plugin-image.png" alt="Spectral Gate Plugin" width="300" /><br />
-    <h2>Subscribe for updates</h2>
-    <input type="email" id="email" placeholder="Your email" required />
-    <button onclick="submitEmail()">Subscribe</button>
-    <p id="msg"></p>
+    <!-- Sparkle GIF overlay -->
+    <img src="img/glitter.gif" alt="Sparkle Effect" class="sparkle" />
+
+    <div class="container">
+      <h1>BA_spectralGate</h1>
+      <p>
+        BA_spectralGate is an audio plugin designed to transform your sound with
+        spectral gating. Created as part of my bachelor’s thesis, this tool adds
+        subtle yet interesting artifacts to your audio, helping you create
+        unique textures for sound design and music production.
+      </p>
+
+      <img
+        class="plugin-img"
+        src="img/ba_specgate.png"
+        alt="Spectral Gate Plugin Interface"
+        onerror="this.style.display='none'"
+      />
+
+      <h2>Try it for free when it's ready!</h2>
+      <p>Sign up below, and you’ll be the first to know when it's available!</p>
+
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email address"
+          required
+        />
+      </div>
+      <button onclick="submitEmail()">Get Updates</button>
+      <div id="msg"></div>
+
+      <div class="footer">
+        <p>Created as part of a bachelor's thesis project</p>
+      </div>
+    </div>
 
     <script>
       const scriptURL =
@@ -34,23 +240,27 @@
       const startTime = Date.now();
       let hasConverted = false;
 
+      // Prefetch the script URL
       fetch(scriptURL).catch(() => {});
 
-      // On conversion
       function submitEmail() {
         const emailField = document.getElementById("email");
         const email = emailField.value.trim();
         const msg = document.getElementById("msg");
 
+        // Reset message state
+        msg.className = "";
+        msg.innerText = "";
+
+        // Validate email
         const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         if (!valid) {
           msg.innerText = "Please enter a valid email address.";
-          msg.style.color = "red";
+          msg.className = "error";
           return;
         }
 
         hasConverted = true;
-
         const timeSpent = Math.round((Date.now() - startTime) / 1000);
 
         fetch(scriptURL, {
@@ -62,15 +272,24 @@
           }),
         })
           .then(() => {
-            msg.innerText = "Thanks for subscribing!";
-            msg.style.color = "green";
+            msg.innerText = "Thank you for your interest. We'll be in touch!";
+            msg.className = "success";
             emailField.value = "";
           })
           .catch(() => {
-            msg.innerText = "Something went wrong.";
-            msg.style.color = "red";
+            msg.innerText = "Something went wrong. Please try again later.";
+            msg.className = "error";
           });
       }
+
+      // Add keyboard support for form submission
+      document
+        .getElementById("email")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            submitEmail();
+          }
+        });
     </script>
   </body>
 </html>

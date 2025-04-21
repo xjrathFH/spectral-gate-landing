@@ -20,6 +20,26 @@
     
       gtag('config', 'AW-16935186142');
     </script>
+
+    <!-- Event snippet for Sign-up conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-16935186142/lGhmCK7Oo7saEN7dqYs_',
+          'value': 1.0,
+          'currency': 'EUR',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
     <style>
       /* Reset & Base Styles */
       * {
@@ -281,6 +301,7 @@
 
         hasConverted = true;
         const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        gtag_report_conversion(); 
 
         fetch(scriptURL, {
           method: "POST",

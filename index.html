@@ -10,38 +10,36 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16935186142">
-    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-16935186142"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'AW-16935186142');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-16935186142");
     </script>
-
-    <!-- Event snippet for Sign-up conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-16935186142/lGhmCK7Oo7saEN7dqYs_',
-          'value': 0.1,
-          'currency': 'EUR',
-          'event_callback': callback
-      });
-      return false;
-    }
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url != "undefined") {
+            window.location = url;
+          }
+        };
+        gtag("event", "conversion", {
+          send_to: "AW-16935186142/lGhmCK7Oo7saEN7dqYs_",
+          value: 0.1,
+          currency: "EUR",
+          event_callback: callback,
+        });
+        return false;
+      }
     </script>
 
     <style>
-      /* Reset & Base Styles */
       * {
         margin: 0;
         padding: 0;
@@ -50,7 +48,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: #dfdfdf;
+        background-color: #f5f5f5;
         color: #000000;
         line-height: 1.6;
         min-height: 100vh;
@@ -61,7 +59,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         position: relative;
       }
 
-      /* Sparkle overlay - fixed but allows scrolling */
       .sparkle-overlay {
         position: fixed;
         top: 0;
@@ -74,22 +71,45 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         mix-blend-mode: screen;
       }
 
-      /* Container */
       .container {
         width: 100%;
-        max-width: 800px;
-        background: #f0f0f0;
-        border: 1px solid #e0e0e0;
-        padding: 3rem;
-        box-shadow: 0 2px 8px rgba(160, 160, 160, 0.08);
+        height: 80vh;
+        max-width: 1400px;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 4rem;
+        padding-bottom: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         position: relative;
         z-index: 1;
-        margin: 2rem 0; /* Added margin for scrolling space */
+        margin: 2rem 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
       }
 
-      /* Typography */
+      .content {
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .image-section {
+        grid-column: 2 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .form-section {
+        grid-column: 3 / 4;
+        padding-left: 2rem;
+        border-left: 1px solid #f0f0f0;
+      }
+
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
         color: #000000;
@@ -97,9 +117,9 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         color: #000000;
       }
 
@@ -107,19 +127,18 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         font-size: 1.1rem;
         color: #404040;
         margin-bottom: 2rem;
+        line-height: 1.7;
       }
 
-      /* Image */
       .plugin-img {
         width: 100%;
         max-width: 600px;
         height: auto;
-        margin: 2rem auto;
-        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         display: block;
       }
 
-      /* Form Elements */
       .form-group {
         margin-bottom: 1.5rem;
       }
@@ -128,6 +147,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         width: 100%;
         padding: 1rem;
         border: 1px solid #e0e0e0;
+        border-radius: 6px;
         font-size: 1rem;
         color: #000000;
         background-color: #ffffff;
@@ -141,6 +161,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       input[type="email"]:focus {
         outline: none;
         border-color: #000000;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
       }
 
       button {
@@ -149,6 +170,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         background-color: #000000;
         color: white;
         border: none;
+        border-radius: 6px;
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
@@ -159,9 +181,13 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
       button:hover {
         background-color: #404040;
+        transform: translateY(-1px);
       }
 
-      /* Message */
+      button:active {
+        transform: translateY(0);
+      }
+
       #msg {
         margin-top: 1rem;
         font-size: 1rem;
@@ -170,6 +196,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         text-align: center;
         position: relative;
         z-index: 2;
+        border-radius: 6px;
       }
 
       #msg.success {
@@ -183,7 +210,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         border-left: 3px solid #ff0000;
       }
 
-      /* Footer */
       .footer {
         margin-top: 3rem;
         font-size: 0.9rem;
@@ -191,86 +217,115 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         text-align: center;
         position: relative;
         z-index: 2;
+        grid-column: 1 / -1;
       }
 
-      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .container {
+          grid-template-columns: 1fr;
+          max-width: 800px;
+          padding: 3rem;
+          gap: 2rem;
+        }
+
+        .content,
+        .image-section,
+        .form-section {
+          grid-column: 1 / -1;
+        }
+
+        .form-section {
+          padding-left: 0;
+          border-left: none;
+          padding-top: 2rem;
+          border-top: 1px solid #f0f0f0;
+        }
+
+        .plugin-img {
+          max-width: 100%;
+        }
+      }
+
       @media (max-width: 768px) {
         body {
-          padding: 1rem;
+          padding: 1.5rem;
         }
 
         .container {
+          padding: 2.5rem;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
           padding: 2rem;
+          border-radius: 0;
+          box-shadow: none;
+          margin: 0;
         }
 
         h1 {
           font-size: 2rem;
         }
 
-        h2 {
-          font-size: 1.3rem;
-        }
-
-        p {
-          font-size: 1rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 1.5rem;
-          border: none;
-          box-shadow: none;
-          margin: 1rem 0;
-        }
-
-        h1 {
-          font-size: 1.8rem;
-        }
-
         .plugin-img {
-          margin: 1.5rem auto;
+          margin: 1.5rem 0;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>BA_spectralGate</h1>
-      <p>
-        BA_spectralGate is an audio plugin designed to transform your sound with
-        spectral gating. Created as part of my bachelor's thesis, this tool adds
-        subtle yet interesting artifacts to your audio, helping you create
-        unique textures for sound design and music production.
-      </p>
+      <div class="content">
+        <h1>BA_spectralGate</h1>
+        <p>
+          BA_spectralGate is an audio plugin designed to transform your sound
+          with spectral gating. Created as part of my bachelor's thesis, this
+          tool adds subtle yet interesting artifacts to your audio, helping you
+          create unique textures for sound design and music production.
+        </p>
+      </div>
 
-      <img
-        class="plugin-img"
-        src="img/ba_specgate.png"
-        alt="Spectral Gate Plugin Interface"
-        onerror="this.style.display='none'"
-      />
-
-      <h2>Try it for free when it's ready!</h2>
-      <p>Sign up below, and you'll be the first to know when it's available!</p>
-
-      <div class="form-group">
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter your email address"
-          required
+      <div class="image-section">
+        <img
+          class="plugin-img"
+          src="img/ba_specgate.png"
+          alt="Spectral Gate Plugin Interface"
+          onerror="this.style.display='none'"
         />
       </div>
-      <button onclick="submitEmail()">Get Updates</button>
-      <div id="msg"></div>
+
+      <div class="form-section">
+        <h2>Try it for free when it's ready!</h2>
+        <p>
+          Sign up below, and you'll be the first to know when it's available!
+        </p>
+
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+        <button onclick="submitEmail()">Get Updates</button>
+        <div id="msg"></div>
+      </div>
 
       <div class="footer">
         <p></p>
       </div>
     </div>
 
-    <!-- Sparkle GIF overlay -->
     <img src="img/glitter.gif" alt="Sparkle Effect" class="sparkle-overlay" />
 
     <script>
@@ -279,7 +334,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       const startTime = Date.now();
       let hasConverted = false;
 
-      // Prefetch the script URL
       fetch(scriptURL).catch(() => {});
 
       function submitEmail() {
@@ -287,11 +341,9 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         const email = emailField.value.trim();
         const msg = document.getElementById("msg");
 
-        // Reset message state
         msg.className = "";
         msg.innerText = "";
 
-        // Validate email
         const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         if (!valid) {
           msg.innerText = "Please enter a valid email address.";
@@ -301,7 +353,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
         hasConverted = true;
         const timeSpent = Math.round((Date.now() - startTime) / 1000);
-       
 
         fetch(scriptURL, {
           method: "POST",
@@ -315,7 +366,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             msg.innerText = "Thank you for your interest. We'll be in touch!";
             msg.className = "success";
             emailField.value = "";
-            gtag_report_conversion(); 
+            gtag_report_conversion();
           })
           .catch(() => {
             msg.innerText = "Something went wrong. Please try again later.";
@@ -323,7 +374,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           });
       }
 
-      // Add keyboard support for form submission
       document
         .getElementById("email")
         .addEventListener("keypress", function (e) {

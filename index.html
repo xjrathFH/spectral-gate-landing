@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BA_spectralGate - VST Plugin</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=AW-16935186142"
@@ -22,6 +26,8 @@
       gtag("js", new Date());
       gtag("config", "AW-16935186142");
     </script>
+
+    <!-- Google Conversion Script -->
     <script>
       function gtag_report_conversion(url) {
         var callback = function () {
@@ -39,259 +45,32 @@
       }
     </script>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
 
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: #f5f5f5;
-        color: #000000;
-        line-height: 1.6;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-        position: relative;
-      }
-
-      .sparkle-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1000;
-        pointer-events: none;
-        opacity: 0.7;
-        mix-blend-mode: screen;
-      }
-
-      .container {
-        width: 100%;
-        height: 80vh;
-        max-width: 1400px;
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 4rem;
-        padding-bottom: 1rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        position: relative;
-        z-index: 1;
-        margin: 2rem 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 4rem;
-        align-items: start;
-      }
-
-      .content {
-        grid-column: 1 / 2;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .image-section {
-        grid-column: 2 / 3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .form-section {
-        grid-column: 3 / 4;
-        padding-left: 2rem;
-        border-left: 1px solid #f0f0f0;
-      }
-
-      h1 {
-        font-size: 2.8rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        color: #000000;
-        line-height: 1.2;
-      }
-
-      h2 {
-        font-size: 1.7rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        color: #000000;
-      }
-
-      p {
-        font-size: 1.1rem;
-        color: #404040;
-        margin-bottom: 2rem;
-        line-height: 1.7;
-      }
-
-      .plugin-img {
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        display: block;
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      input[type="email"] {
-        width: 100%;
-        padding: 1rem;
-        border: 1px solid #e0e0e0;
-        border-radius: 6px;
-        font-size: 1rem;
-        color: #000000;
-        background-color: #ffffff;
-        transition: all 0.2s ease;
-      }
-
-      input[type="email"]::placeholder {
-        color: #808080;
-      }
-
-      input[type="email"]:focus {
-        outline: none;
-        border-color: #000000;
-        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-      }
-
-      button {
-        width: 100%;
-        padding: 1rem;
-        background-color: #000000;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        position: relative;
-        z-index: 2;
-      }
-
-      button:hover {
-        background-color: #404040;
-        transform: translateY(-1px);
-      }
-
-      button:active {
-        transform: translateY(0);
-      }
-
-      #msg {
-        margin-top: 1rem;
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 0.75rem;
-        text-align: center;
-        position: relative;
-        z-index: 2;
-        border-radius: 6px;
-      }
-
-      #msg.success {
-        color: #000000;
-        background-color: #f0f0f0;
-      }
-
-      #msg.error {
-        color: #000000;
-        background-color: #f0f0f0;
-        border-left: 3px solid #ff0000;
-      }
-
-      .footer {
-        margin-top: 3rem;
-        font-size: 0.9rem;
-        color: #808080;
-        text-align: center;
-        position: relative;
-        z-index: 2;
-        grid-column: 1 / -1;
-      }
-
-      @media (max-width: 1024px) {
-        .container {
-          grid-template-columns: 1fr;
-          max-width: 800px;
-          padding: 3rem;
-          gap: 2rem;
-        }
-
-        .content,
-        .image-section,
-        .form-section {
-          grid-column: 1 / -1;
-        }
-
-        .form-section {
-          padding-left: 0;
-          border-left: none;
-          padding-top: 2rem;
-          border-top: 1px solid #f0f0f0;
-        }
-
-        .plugin-img {
-          max-width: 100%;
-        }
-      }
-
-      @media (max-width: 768px) {
-        body {
-          padding: 1.5rem;
-        }
-
-        .container {
-          padding: 2.5rem;
-        }
-
-        h1 {
-          font-size: 2.2rem;
-        }
-
-        h2 {
-          font-size: 1.5rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 2rem;
-          border-radius: 0;
-          box-shadow: none;
-          margin: 0;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        .plugin-img {
-          margin: 1.5rem 0;
-        }
-      }
-    </style>
+    <!-- Language Detection -->
+    <script>
+      window.onload = () => {
+        const isJapanese = navigator.language === "ja";
+        document.querySelectorAll("[data-en]").forEach((el) => {
+          el.innerText = isJapanese
+            ? el.getAttribute("data-ja")
+            : el.getAttribute("data-en");
+        });
+      };
+    </script>
   </head>
+
   <body>
     <div class="container">
       <div class="content">
-        <h1>BA_spectralGate</h1>
-        <p>
-          BA_spectralGate is an audio plugin designed to transform your sound
-          with spectral gating. Created as part of my bachelor's thesis, this
-          tool adds subtle yet interesting artifacts to your audio, helping you
-          create unique textures for sound design and music production.
-        </p>
+        <h1 data-en="BA_spectralGate" data-ja="BA_スペクトラルゲート">
+          BA_spectralGate
+        </h1>
+        <p
+          data-en="BA_spectralGate is an audio plugin designed to transform your sound with spectral gating. Created as part of my bachelor's thesis, this tool adds subtle yet interesting artifacts to your audio, helping you create unique textures for sound design and music production."
+          data-ja="BA_スペクトラルゲートは、スペクトルゲーティングによって音を変換するために設計されたオーディオプラグインです。私の学士論文の一環として作成されたこのツールは、微妙で興味深いアーティファクトを音に追加し、サウンドデザインや音楽制作にユニークなテクスチャを生み出します。"
+        ></p>
       </div>
 
       <div class="image-section">
@@ -304,25 +83,37 @@
       </div>
 
       <div class="form-section">
-        <h2>Try it for free when it's ready!</h2>
-        <p>
-          Sign up below, and you'll be the first to know when it's available!
-        </p>
+        <h2
+          data-en="Try it for free when it's ready!"
+          data-ja="準備ができたら無料で試してみてください！"
+        ></h2>
+        <p
+          data-en="Sign up below, and you'll be the first to know when it's available!"
+          data-ja="以下にサインアップすると、利用可能になったときに最初にお知らせします！"
+        ></p>
 
         <div class="form-group">
           <input
             type="email"
             id="email"
             placeholder="Enter your email address"
+            data-en="Enter your email address"
+            data-ja="メールアドレスを入力してください"
             required
           />
         </div>
-        <button onclick="submitEmail()">Get Updates</button>
+        <button
+          data-en="Get Updates"
+          data-ja="アップデートを受け取る"
+          onclick="submitEmail()"
+        ></button>
         <div id="msg"></div>
       </div>
 
       <div class="footer">
-        <p></p>
+        <p data-en="All rights reserved." data-ja="全ての権利を保有します。">
+          All rights reserved.
+        </p>
       </div>
     </div>
 
@@ -346,7 +137,10 @@
 
         const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         if (!valid) {
-          msg.innerText = "Please enter a valid email address.";
+          msg.innerText =
+            navigator.language === "ja"
+              ? "有効なメールアドレスを入力してください。"
+              : "Please enter a valid email address.";
           msg.className = "error";
           return;
         }
@@ -363,13 +157,19 @@
           }),
         })
           .then(() => {
-            msg.innerText = "Thank you for your interest. We'll be in touch!";
+            msg.innerText =
+              navigator.language === "ja"
+                ? "ご登録ありがとうございます。準備ができ次第ご連絡いたします。"
+                : "Thank you for your interest. We'll be in touch!";
             msg.className = "success";
             emailField.value = "";
             gtag_report_conversion();
           })
           .catch(() => {
-            msg.innerText = "Something went wrong. Please try again later.";
+            msg.innerText =
+              navigator.language === "ja"
+                ? "エラーが発生しました。後でもう一度お試しください。"
+                : "Something went wrong. Please try again later.";
             msg.className = "error";
           });
       }
